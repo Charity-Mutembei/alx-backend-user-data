@@ -65,15 +65,18 @@ class BasicAuth(Auth):
             -> (str, str):
 
         """
-        Returns the user email and password from the Base64 decoded value
+        Returns:
+        the user email and user password
+        from the Base64 value decoded
         Args:
-            decoded_base64_authorization_header: decoded string
+            decoded string - decoded_base64_authorization_header:
 
         Returns:
-            user email and password
+            user email and user password
         """
-        if decoded_base64_authorization_header is None or \
-                type(decoded_base64_authorization_header) is not str:
+        if decoded_base64_authorization_header is None:
+            return None, None
+        if type(decoded_base64_authorization_header) is not str:
             return None, None
 
         if ':' not in decoded_base64_authorization_header:
