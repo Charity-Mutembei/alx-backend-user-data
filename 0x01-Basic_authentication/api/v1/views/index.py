@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
-""" Module of Index views
+""" These are the index views models
 """
-from flask import jsonify, abort
 from api.v1.views import app_views
+from flask import jsonify, abort
 
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
-def status() -> str:
-    """ GET /api/v1/status
+def statusview() -> str:
+    """ The line command [GET /api/v1/status]
     Return:
-      - the status of the API
+      - the API status
     """
     return jsonify({"status": "OK"})
 
 
 @app_views.route('/stats/', strict_slashes=False)
-def stats() -> str:
-    """ GET /api/v1/stats
+def statsview() -> str:
+    """ The line command [GET /api/v1/stats]
     Return:
-      - the number of each objects
+      - the objects number
     """
     from models.user import User
     stats = {}
@@ -27,18 +27,18 @@ def stats() -> str:
 
 
 @app_views.route('/unauthorized', methods=['GET'], strict_slashes=False)
-def unauthorized() -> None:
-    """ GET /api/v1/unauthorized
+def unauthorizedaccess() -> None:
+    """ the line of command [GET /api/v1/unauthorized]
     Return:
-      - the status of the API
+      - the API status
     """
     abort(401)
 
 
 @app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
-def unauthenticated() -> None:
-    """ GET /api/v1/forbidden
+def unauthenticatedaccess() -> None:
+    """the line of code is [GET /api/v1/forbidden]
     Return:
-      - the status of the API
+      - the API status
     """
     abort(403)
