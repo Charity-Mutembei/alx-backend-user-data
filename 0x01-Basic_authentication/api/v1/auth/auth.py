@@ -25,10 +25,10 @@ class Auth:
         """
         if path is None:
             return True
-        elif excluded_paths is None or excluded_paths == []:
-            return True
         elif path in excluded_paths:
             return False
+        elif excluded_paths is None or excluded_paths == []:
+            return True
         else:
             for i in excluded_paths:
                 if i.startswith(path):
