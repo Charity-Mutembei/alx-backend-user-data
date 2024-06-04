@@ -14,7 +14,8 @@ class Auth:
     def __int__(self):
         pass
 
-    def require_authentication(self, path: str, excluded_pathss: List[str]) -> bool:
+    def require_authentication(self, path: str,
+                               excluded_pathss: List[str]) -> bool:
         """
         Decides whether a path needs authentication.
         Args:
