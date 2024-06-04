@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """
-Basic Auth Class
+Task 6: basic auth class
 """
-from typing import TypeVar
-
 from api.v1.auth.auth import Auth
+from typing import TypeVar
 
 
 class BasicAuth(Auth):
     """
-    Basic Auth Class
+    Task 6: basicAuth that takes in the Auth class
     """
 
     def __int__(self):
@@ -18,15 +17,17 @@ class BasicAuth(Auth):
     def extract_base64_authorization_header(self, authorization_header: str) \
             -> str:
         """
-        Returns the Base64 part of the Authorization header:
+        Returns Authorization header-the Base64 part of the:
         Args:
-            authorization_header:
+            the Base64 part of the  authorization header:
 
         Returns:
-            A string of Base64 encoded values
+            encoded values - A string of Base64
         """
-        if authorization_header is None or \
-                type(authorization_header) is not str:
+        if authorization_header is None:
+            return None
+        
+        if type(authorization_header) is not str:
             return None
 
         if not authorization_header.startswith("Basic "):
