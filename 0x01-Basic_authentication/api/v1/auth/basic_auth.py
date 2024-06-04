@@ -87,17 +87,23 @@ class BasicAuth(Auth):
     def user_object_from_credentials(self, user_email: str, user_pwd: str) \
             -> TypeVar('User'):
         """
-        Returns the User instance based on his email and password
+        Returns:
+        the User instance using their user email and user password
         Args:
-            user_email:
+            user_email &
             user_pwd:
 
         Returns:
-
+            None
         """
 
-        if user_email is None or type(user_email) is not str or \
-                user_pwd is None or type(user_pwd) is not str:
+        if user_email is None:
+            return None
+        elif type(user_email) is not str:
+            return None
+        elif user_pwd is None:
+            return None
+        elif type(user_pwd) is not str:
             return None
 
         from models.user import User
