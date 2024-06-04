@@ -39,17 +39,19 @@ class BasicAuth(Auth):
                                            base64_authorization_header: str) \
             -> str:
         """
-        Returns the decoded value of a Base64 string
+        Task 8: Basic-Base64 decode
+        Returns Base64 string-the decoded value of a
         Args:
-            base64_authorization_header: String to be decoded
+            String to be decoded - base64_authorization_header
 
         Returns:
-            The decoded value of a Base64 string
+            Base64 string decoded value of a
         """
         import base64
 
-        if base64_authorization_header is None or \
-                type(base64_authorization_header) is not str:
+        if base64_authorization_header is None:
+            return None
+        if type(base64_authorization_header) is not str:
             return None
 
         try:
