@@ -39,8 +39,8 @@ class SessionAuth(Auth):
         """
         task 3
         """
-        session_cookie = self.session_cookie(request)
         user = User.get(user_id)
+        session_cookie = self.session_cookie(request)
         user_id = self.user_id_for_session_id(session_cookie)
         return user
 

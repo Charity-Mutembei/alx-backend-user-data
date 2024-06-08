@@ -57,7 +57,7 @@ def unauthorized_access(error) -> Tuple[Any, int]:
 
 
 @app.before_request
-def bef_req():
+def bef_request():
     """
     request filter before handling the assigned route
     """
