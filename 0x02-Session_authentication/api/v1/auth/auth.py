@@ -51,7 +51,7 @@ class Auth:
         """
         return None
 
-    def session_cookies(self, request=None):
+    def session_cookie(self, request=None):
         """
         Task 4
         """
