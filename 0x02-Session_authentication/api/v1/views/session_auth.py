@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Vew that handles all routes for the Session authentication.
+Task 2 check
 """
 from typing import Tuple, Any
 from os import getenv
