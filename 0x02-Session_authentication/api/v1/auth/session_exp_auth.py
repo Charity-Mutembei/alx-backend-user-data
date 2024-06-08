@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
 
 """
-Definition of session expiry class
+Task 9
 """
 from datetime import time
-from os import getenv
-
 from api.v1.auth.auth import Auth
+from os import getenv
 
 
 class SessionExpAuth(Auth):
     """
-    Implement Session Expiry Authorization protocol methods
+    Task 9
     """
 
     def __init__(self):
         """
-        Initialize SessionExpAuth
+        Task 9 Initialize SessionExpAuth
         """
         super().__init__()
         try:
@@ -26,12 +25,7 @@ class SessionExpAuth(Auth):
 
     def create_session(self, user_id: str = None) -> str:
         """
-        Creates a Session ID for a user with id user_id
-        Args:
-            user_id (str): user's user id
-        Return:
-            None is user_id is None or not a string
-            Session ID in string format
+        task 9
         """
         if user_id is None or not isinstance(user_id, str):
             return None
@@ -43,11 +37,7 @@ class SessionExpAuth(Auth):
 
     def user_id_for_session_id(self, session_id: str = None) -> str:
         """
-        Returns a user ID based on a session ID
-        Args:
-            session_id (str): session ID
-        Return:
-            user id or None if session_id is None or not a string
+        Task 9
         """
         if session_id is None or not isinstance(session_id, str):
             return None
