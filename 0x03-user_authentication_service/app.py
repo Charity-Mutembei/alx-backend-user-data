@@ -103,11 +103,25 @@ def profile() -> str:
 
 @app.route('/reset_password', methods=['POST'], strict_slashes=False)
 def get_reset_password_token() -> str:
+    """
+    function to respond to the POST /reset_password route.
+    The request is expected to contain form data with
+    the "email" field.
+    """
     email = request.form.get('email')
     try:
+        """
+        generate a token and respond with a
+        200 HTTP status and the following
+        JSON payload:
+        """
         token = AUTH.get_reset_password_token(email)
         return jsonify({"email": email, "reset_token": token}), 200
     except ValueError:
+        """
+        If the email is not registered, respond with a
+        403 status code
+        """
         abort(403)
 
 
