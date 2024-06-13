@@ -99,6 +99,10 @@ class Auth:
         Returns reset password token.
         """
         try:
+            """
+            Use the reset_token to find the corresponding user.
+            If it does not exist, raise a ValueError exception.
+            """
             user = self._db.find_user_by(email=email)
             user.reset_token = _generate_uuid()
             return user.reset_token
