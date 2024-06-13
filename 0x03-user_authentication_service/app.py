@@ -80,8 +80,16 @@ def logout() -> str:
 
 @app.route('/profile', methods=['GET'], strict_slashes=False)
 def profile() -> str:
+    """
+    function to respond to the GET /profile route.
+    """
     session_id = request.cookies.get('session_id')
     user = AUTH.get_user_from_session_id(session_id)
+    """
+    Use it to find the user. If the user exist,
+    respond with a 200 HTTP status and the following
+    JSON payload:
+    """
     if user:
         return jsonify({"email": user.email}), 200
     else:
