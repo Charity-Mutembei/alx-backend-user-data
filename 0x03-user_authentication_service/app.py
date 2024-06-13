@@ -18,8 +18,17 @@ def index():
 
 @app.route('/users', methods=['POST'])
 def register():
+    """
+    email first
+    """
     email = request.form.get('email')
+    """
+    followed by password
+    """
     password = request.form.get('password')
+    """
+    check if user exists
+    """
     try:
         user = AUTH.register_user(email, password)
         return jsonify({"email": user.email, "message": "user created"}), 200
