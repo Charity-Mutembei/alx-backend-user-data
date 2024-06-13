@@ -128,7 +128,8 @@ def get_reset_password_token() -> str:
 @app.route("/reset_password", methods=["PUT"], strict_slashes=False)
 def update_password() -> str:
     """
-    Update a user's password
+    function in the app module to respond to the
+    PUT /reset_password route.
     """
     email = request.form.get("email")
     reset_token = request.form.get("reset_token")
@@ -138,7 +139,10 @@ def update_password() -> str:
         AUTH.update_password(reset_token, new_password)
     except ValueError:
         abort(403)
-
+    """
+    If the token is valid, respond with a
+    200 HTTP code and the following JSON payload:
+    """
     return jsonify({"email": f"{email}", "message": "Password updated"})
 
 
