@@ -60,6 +60,9 @@ class Auth:
         new session.
         """
         try:
+            """
+            two methods combined
+            """
             user = self._db.find_user_by(email=email)
             user.session_id = _generate_uuid()
             return user.session_id
