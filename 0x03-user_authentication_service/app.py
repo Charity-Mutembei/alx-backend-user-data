@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 
 """
-Flask app
+Task 6: Basic Flask App
 """
 from typing import Tuple
-
-from flask import Flask, jsonify, request, abort, redirect, Response
 from auth import Auth
+from flask import Flask, jsonify, request, abort, redirect, Response
 
 app = Flask(__name__)
 AUTH = Auth()
