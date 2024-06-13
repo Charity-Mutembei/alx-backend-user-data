@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """
-SQLAlchemy model for a user.
+Task 0: User model
 """
-from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String
 
-# Create base class
+
 Base = declarative_base()
 
 
 class User(Base):
     """
-    User model class.
+    SQLAlchemy model called User for database called
+    users.
     """
 
     __tablename__ = "users"
