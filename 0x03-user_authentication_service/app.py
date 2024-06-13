@@ -93,6 +93,11 @@ def profile() -> str:
     if user:
         return jsonify({"email": user.email}), 200
     else:
+        """
+        If the session ID is invalid or
+        the user does not exist, respond with a
+        403 HTTP status.
+        """
         abort(403)
 
 
