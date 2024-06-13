@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-End-to-end integration tests for the API.
+Task 20: End to end integration test
 """
 
 import requests
@@ -9,9 +9,6 @@ import requests
 def register_user(email: str, password: str) -> None:
     """
     Test user registration endpoint
-    :param email: The email of the user
-    :param password: The password of the user
-    :return: None if the user was created, otherwise an error
     """
     response = requests.post('http://127.0.0.1:5000/users', data={
         'email': email,
@@ -25,27 +22,9 @@ def register_user(email: str, password: str) -> None:
         assert (response.json() == {"message": "email already registered"})
 
 
-def log_in_wrong_password(email: str, password: str) -> None:
-    """
-    Test user login endpoint
-    :param email: The email of the user
-    :param password: The password of the user
-    :return: Assert that the response is 401
-    """
-    response = requests.post('http://127.0.0.1:5000/sessions', data={
-        'email': email,
-        'password': password
-    })
-
-    assert (response.status_code == 401)
-
-
 def log_in(email: str, password: str) -> str:
     """
-    Test user login endpoint
-    :param email: The email of the user
-    :param password: The password of the user
-    :return: Session ID if the user was logged in, otherwise an error
+    Test user login
     """
     response = requests.post('http://127.0.0.1:5000/sessions', data={
         'email': email,
@@ -59,33 +38,38 @@ def log_in(email: str, password: str) -> str:
         assert (response.status_code == 401)
 
 
-def profile_unlogged() -> None:
+def log_in_wrong_password(email: str, password: str) -> None:
     """
-    Test profile endpoint
-    :return: Assert that the response is 403
+    Test user login
     """
-    response = requests.get('http://127.0.0.1:5000/profile')
-    assert (response.status_code == 403)
+    response = requests.post('http://127.0.0.1:5000/sessions', data={
+        'email': email,
+        'password': password
+    })
+
+    assert (response.status_code == 401)
 
 
 def profile_logged(session_id: str) -> None:
     """
-    Test profile endpoint
-    :param session_id: The session ID of the user
-    :return: Assert that the response is 200
+    Test profile
     """
     cookies = {'session_id': session_id}
     response = requests.get('http://127.0.0.1:5000/profile', cookies=cookies)
     assert (response.status_code == 200)
 
 
+def profile_unlogged() -> None:
+    """
+    Test profile
+    """
+    response = requests.get('http://127.0.0.1:5000/profile')
+    assert (response.status_code == 403)
+
+
 def log_out(session_id: str) -> None:
     """
-    Test for log out with the given session_id.
-    Args:
-        session_id: The session_id of the user.
-    Returns:
-        None
+    Test for log out
     """
     cookies = {'session_id': session_id}
     r = requests.delete('http://127.0.0.1:5000/sessions',
@@ -98,11 +82,7 @@ def log_out(session_id: str) -> None:
 
 def reset_password_token(email: str) -> str:
     """
-    Test for reset password token with the given email.
-    Args:
-        email: The email of the user.
-    Returns:
-        The reset_token of the user.
+    Test for reset
     """
     r = requests.post('http://127.0.0.1:5000/reset_password',
                       data={'email': email})
@@ -116,14 +96,7 @@ def reset_password_token(email: str) -> str:
 def update_password(email: str, reset_token: str,
                     new_password: str) -> None:
     """
-    Test for update password with the given email,
-    reset_token and new_password.
-    Args:
-        email: The email of the user.
-        reset_token: The reset_token of the user.
-        new_password: The new password of the user.
-    Returns:
-        None
+    Test for update
     """
     data = {'email': email, 'reset_token': reset_token,
             'new_password': new_password}
